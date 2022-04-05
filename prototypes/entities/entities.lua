@@ -48,7 +48,7 @@ data:extend({
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.8, -1}, {0.8, 1}},
     damaged_trigger_effect = hit_effects.rock(),
-    crafting_categories = {"mana-infusion"},
+    crafting_categories = {"mana-infusion","smelting"},
     result_inventory_size = 1,
     energy_usage = "100kW",
     crafting_speed = 1,
@@ -228,10 +228,12 @@ data:extend({
 
 
 local mana_distiliary = util.table.deepcopy(data.raw["assembling-machine"]["assembling-machine-2"])
+mana_distiliary.fluid_boxes[2].base_area=1
 mana_distiliary.name = "mana-distiliary"
-
-
+mana_distiliary.fixed_recipe = "liquify-mana"
 mana_distiliary.type="assembling-machine"
+mana_distiliary.source_inventory_size = 0
+mana_distiliary.result_inventory_size = 1
 mana_distiliary.energy_source.type = "burner"
 mana_distiliary.energy_source.fuel_category = "mana"
 mana_distiliary.energy_source.effectivity = 1
@@ -262,17 +264,94 @@ mana_pylon.maximum_wire_distance = 18
 mana_pylon.name = "mana-pylon"
 mana_pylon.supply_area_distance = 9
 
+
+
 local advanced_mana_foundry = util.table.deepcopy(data.raw["furnace"]["electric-furnace"])
 advanced_mana_foundry.name = "advanced-mana-foundry"
-advanced_mana_foundry.crafting_categories = {"mana-infusion"}
+advanced_mana_foundry.crafting_categories = {"mana-infusion","smelting"}
 advanced_mana_foundry.minable = {mining_time = 0.2, result = "advanced-mana-foundry"}
-advanced_mana_foundry.energy_usage = "200KW"
+advanced_mana_foundry.energy_usage = "400KW"
+advanced_mana_foundry.crafting_speed =3
+
+local fluid_furnace = util.table.deepcopy(data.raw["furnace"]["steel-furnace"])
+fluid_furnace.energy_source.fluid_box =  util.table.deepcopy(data.raw["assembling-machine"]["assembling-machine-2"].fluid_boxes[1])
+fluid_furnace.energy_source.fluid_box.base_area = 1
+fluid_furnace.energy_source.fluid_box.production_type = "input-output"
+fluid_furnace.energy_source.fluid_box.pipe_connections = {
+  --{ type="input", position = {0.5,-1.5} },
+  { type="input-output", position = {1.5,-.5} },
+  { type="input-output", position = {-1.5,-.5} }
+  
+}
+fluid_furnace.energy_source.type = "fluid"
+fluid_furnace.energy_source.fluid_box.filter = "pure-mana"
+fluid_furnace.energy_source.scale_fluid_usage = true
+fluid_furnace.energy_source.burns_fluid = true
+fluid_furnace.crafting_speed = 2
+fluid_furnace.minable = {mining_time = 0.2 , result = "fluid-mana-foundry"}
+fluid_furnace.selection_box = {{-.9, -.9}, {.9, .9}}
+fluid_furnace.collision_box = {{-.9, -.9}, {.9, .9}}
+fluid_furnace.crafting_categories = {"mana-infusion","smelting"}
+
+fluid_furnace.energy_usage = "200KW"
+fluid_furnace.name = "fluid-mana-foundry"
 
 
 
+local burner_miner = util.table.deepcopy(data.raw["mining-drill"]["burner-mining-drill"])
+burner_miner.name = "mana-burner-miner"
+burner_miner.minable.result = "mana-burner-miner"
+burner_miner.energy_source =
+    {
+      type = "burner",
+      fuel_category = "mana",
+      effectivity = 1,
+      fuel_inventory_size = 1,
+      emissions_per_minute = 12,
+      light_flicker = {color = {0,0,0}},
+      smoke =
+      {
+        {
+          name = "smoke",
+          deviation = {0.1, 0.1},
+          frequency = 3
+        }
+      }
+}
+
+
+local fluid_miner = util.table.deepcopy(data.raw["mining-drill"]["electric-mining-drill"])
+fluid_miner.name = "fluid-miner"
+fluid_miner.minable.result = "fluid-miner"
+fluid_miner.input_fluid_box.filter = "pure-mana"
+
+fluid_miner.input_fluid_box.base_area = 1
+fluid_miner.energy_source = {
+    scale_fluid_usage = true,
+    type = "fluid",
+    drain = "6KW",
+    burns_fluid = true,
+    fluid_box = fluid_miner.input_fluid_box,
+    emissions_per_minute = 10,
+    usage_priority = "secondary-input"
+  }
+  fluid_miner.input_fluid_box = nil
+
+
+local advanced_miner = util.table.deepcopy(data.raw["mining-drill"]["electric-mining-drill"])
+advanced_miner.name = "advanced-miner"
+advanced_miner.minable.result = "advanced-miner"
+advanced_miner.energy_usage = "180KW"
+advanced_miner.energy_source.drain = "6KW"
+advanced_miner.mining_speed = 1
 data:extend({
-        mana_distiliary,
-        mana_aetheriser,
-        mana_pylon,
-        advanced_mana_foundry})
+  mana_distiliary,
+  mana_aetheriser,
+  mana_pylon,
+  advanced_mana_foundry,
+  fluid_furnace,
+  burner_miner,
+  fluid_miner,
+  advanced_miner
+})
 

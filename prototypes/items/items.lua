@@ -19,6 +19,49 @@ data:extend({
     place_result = "basic-mana-foundry",
     stack_size = 50
 },
+{
+    type = "item",
+    name = "fluid-mana-foundry",
+    icon = "__base__/graphics/icons/steel-furnace.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "smelting-machine",
+    order = "a[steel-furnace]",
+    place_result = "fluid-mana-foundry",
+    stack_size = 50
+},
+  
+  {
+    type = "item",
+    name = "thaumic-belt",
+    icon = "__base__/graphics/icons/fast-transport-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "belt",
+    order = "a[transport-belt]-b[fast-transport-belt]",
+    place_result = "thaumic-belt",
+    stack_size = 100
+  },
+  
+  {
+    type = "item",
+    name = "thaumic-underground-belt",
+    icon = "__base__/graphics/icons/fast-underground-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "belt",
+    order = "a[transport-belt]-b[fast-transport-belt]",
+    place_result = "thaumic-underground-belt",
+    stack_size = 100
+  },
+    {
+    type = "item",
+    name = "thaumic-splitter",
+    icon = "__base__/graphics/icons/fast-splitter.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "belt",
+    order = "a[transport-belt]-b[fast-transport-belt]",
+    place_result = "thaumic-splitter",
+    stack_size = 100
+  },
+
   {
     type = "item",
     name = "advanced-mana-foundry",
@@ -103,6 +146,39 @@ data:extend({
     place_result = "mana-pylon",
     stack_size = 50
   },
+  {
+    type = "item",
+    name = "mana-burner-miner",
+    icon = "__base__/graphics/icons/burner-mining-drill.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "extraction-machine",
+    order = "a[items]-a[burner-mining-drill]",
+    place_result = "mana-burner-miner",
+    stack_size = 50
+  },
+  
+  {
+    type = "item",
+    name = "fluid-miner",
+    icon = "__base__/graphics/icons/electric-mining-drill.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "extraction-machine",
+    order = "a[items]-b[electric-mining-drill]",
+    place_result = "fluid-miner",
+    stack_size = 50
+  },
+  
+  {
+    type = "item",
+    name = "advanced-miner",
+    icon = "__base__/graphics/icons/electric-mining-drill.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "extraction-machine",
+    order = "a[items]-b[electric-mining-drill]",
+    place_result = "advanced-miner",
+    stack_size = 50
+  },
+  
 
 }
 

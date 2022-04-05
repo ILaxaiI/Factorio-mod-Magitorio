@@ -7,7 +7,7 @@ data:extend({
         result = "basic-mana-foundry",
         enabled =  true
         
-    },      
+    },
     {
         type = "recipe",
         name = "advanced-mana-foundry",
@@ -16,6 +16,40 @@ data:extend({
         enabled =  true
         
     },
+    {
+        type = "recipe",
+        name =     "fluid-mana-foundry",
+        ingredients = {{"stone", 5,},{"mana-crystal",1}},
+        result = "fluid-mana-foundry",
+        enabled =  true
+        
+    },
+    
+    
+    {
+      type = "recipe",
+      name = "thaumic-belt",
+      ingredients = {{"thaumic-iron",1},{"thaumic-gear",1}},
+      results = {{name = "thaumic-belt", amount = 2}},
+      enabled = true
+    },
+    {
+      type = "recipe",
+      name = "thaumic-underground-belt",
+      ingredients = {{"thaumic-iron",10},{"thaumic-belt",7}},
+      results = {{name = "thaumic-underground-belt", amount = 2}},
+      enabled = true
+    },
+    {
+      type = "recipe",
+      name = "thaumic-splitter",
+      ingredients = {{"thaumic-belt",2},{"thaumic-gear",5}},
+      results = {{name = "thaumic-splitter", amount = 1}},
+      enabled = true
+    },
+    
+    
+    
     {
         type = "recipe",
         name = "mana-aetheriser",
@@ -95,5 +129,26 @@ data:extend({
         ingredients = {},
         result = "mana-pylon",
         category = "crafting",
-    }
+    },
+    {
+        type = "recipe",
+        name = "mana-burner-miner",
+        ingredients = {},
+        result = "mana-burner-miner",
+        category = "crafting",
+    },
+    {
+        type = "recipe",
+        name = "fluid-miner",
+        ingredients = {},
+        result = "fluid-miner",
+        category = "crafting",
+    },
+    {
+        type = "recipe",
+        name = "advanced-miner",
+        ingredients = {},
+        result = "advanced-miner",
+        category = "crafting",
+    },
     })

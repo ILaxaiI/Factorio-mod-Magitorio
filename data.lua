@@ -17,7 +17,7 @@ require("prototypes.recipe.modify-base")
 require("prototypes.technology.modify-base")
 require("prototypes.ores.mana-crystal")
 require("prototypes.items.items")
-require("prototypes.entities.entities")
+require("prototypes.entities.init")
 require("prototypes.fluid")
 require("prototypes.recipe.recipe")
 
