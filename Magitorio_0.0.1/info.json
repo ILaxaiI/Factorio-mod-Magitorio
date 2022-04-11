@@ -1,0 +1,10 @@
+{
+  "name": "Magitorio",
+  "version": "0.0.1",
+  "title": "Magitorio",
+  "author": "Laxai",
+  "homepage": "",
+  "dependencies": ["base >= 1.1.0"],
+  "description": "TBD",
+  "factorio_version": "1.1"
+}
